@@ -1,11 +1,11 @@
 {
-	"name": "solar2d-autocomplete",
-	"displayName": "Solar2D Editor",
+	"name": "solar2d-autocomplete-luke1985",
+	"displayName": "Solar2D Editor by luke1985",
 	"description": "Solar2D Editor with Autocomplete/Snippets for Visual Studio Code",
 	"publisher": "solar2D",
 	"version": "1.2.2",
 	"icon": "Solar2D.png",
-	"repository":"https://github.com/solar2d/Solar2DEditor-VSCode",
+	"repository":"https://github.com/lukasz1985/Solar2DEditor-VSCode",
 	"engines": {
 		"vscode": "^1.68.0"
 	},
@@ -13,6 +13,7 @@
 		"Snippets",
 		"Debuggers"
 	],
+	"license": "zlib",
 	"keywords": [
 		"solar2d",
 		"solar2D",

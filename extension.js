@@ -3,6 +3,7 @@
 const vscode = require('vscode');
 const os = require('os');
 const { Console } = require('console');
+const path = require('path');
 
 
 /**
@@ -51,14 +52,14 @@ function activate(context) {
 	let disposable = vscode.commands.registerCommand('extension.solar2D.launchProj', () => {
 		const isWindows = () => Boolean(vscode.env.appRoot && vscode.env.appRoot[0] !== "/");
 		var workspaceFolder
-		vscode.workspace.workspaceFolders?.map(folder =>workspaceFolder = folder.uri.path)
+		vscode.workspace.workspaceFolders?.map(folder =>workspaceFolder = folder.uri.fsPath)
 		var term = vscode.window.createTerminal();
 		term.show();
 		if(workspaceFolder){
 			if(os.type() === "Windows_NT"){
 				workspaceFolder = workspaceFolder.replaceAll('/', '\\');
 				workspaceFolder = workspaceFolder.replaceAll('\\c:', 'C:');
-				term.sendText(`cmd /c '"`+getWindowsFolder()+`\\Corona Simulator.exe" -debug -no-console "`+workspaceFolder+`\\main.lua"'  *>&1 | Out-Default`);
+				term.sendText(`cmd /c '"`+getWindowsFolder()+`\\Corona Simulator.exe" -no-console "`+workspaceFolder+`\\main.lua"'  *>&1 | Out-Default`);
 			}else if(os.type() === "Darwin"){ //Mac
 				workspaceFolder = workspaceFolder.replaceAll('\ ', '\\ ');
 				var simFolder = getMacSimulatorFolder();
@@ -82,7 +83,7 @@ function activate(context) {
 	disposable = vscode.commands.registerCommand('extension.solar2D.launchProjConsole', () => {
 		const isWindows = () => Boolean(vscode.env.appRoot && vscode.env.appRoot[0] !== "/");
 		var workspaceFolder
-		vscode.workspace.workspaceFolders?.map(folder =>workspaceFolder = folder.uri.path)
+		vscode.workspace.workspaceFolders?.map(folder =>workspaceFolder = folder.uri.fsPath)
 		var term = vscode.window.createTerminal();
 		term.show();
 		if(workspaceFolder){
